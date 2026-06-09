@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+      # The tests create throwaway git repos and make real commits, so a
+      # configured git identity is required on a clean CI runner.
+      - name: Configure git identity
+        run: |
+          git config --global user.email ci@example.com
+          git config --global user.name CI
+      - name: Format check
+        run: zig fmt --check build.zig src examples
+      - name: Build
+        run: zig build
+      - name: Test
+        run: zig build test --summary all
