@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Zig 0.16](https://img.shields.io/badge/Zig-0.16.0-f7a41d.svg)](https://ziglang.org/)
 
+**Website:** [richardwooding.github.io/gitmeta-zig](https://richardwooding.github.io/gitmeta-zig/)
+
 Fast **per-file git metadata** for Zig — last-commit time / author / subject,
 first-seen, commit count (churn), and tracked / ignored status — resolved by
 scanning a working tree **once** and answering per-path lookups in constant
